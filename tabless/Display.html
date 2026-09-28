@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Table Data</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+</head>
+<body>
+
+    <h1>Restaurant Table Entry Form</h1>
+
+    <form>
+        <label>Table Number:</label>
+        <br>
+        <input type="text" placeholder="e.g. T-001">
+        <br><br>
+
+        <label>Capacity:</label>
+        <br>
+        <input type="number" placeholder="e.g. 4">
+        <br><br>
+
+        <label>Area:</label>
+        <br>
+        <select>
+            <option value="indoor">Indoor</option>
+            <option value="outdoor">Outdoor</option>
+            <option value="vip">VIP</option>
+        </select>
+        <br><br>
+
+        <label>Table Status:</label>
+        <br>
+        <select>
+            <option value="available">Available</option>
+            <option value="occupied">Occupied</option>
+            <option value="reserved">Reserved</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Add Table</button>
+    </form>
+
+</body>
+</html>
