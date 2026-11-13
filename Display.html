@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Table Entry Form & Catalog</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="StyleSheet.css">
+</head>
+<body class="bg-light">
+
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h1 class="fw-bold text-dark">Restaurant & Cafe System</h1>
+                <hr class="w-25 mx-auto">
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h5 class="mb-0">➕ Restaurant Table Entry Form</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="tableForm">
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Table Number:</label>
+                                <input type="text" id="tableNumber" class="form-control" placeholder="e.g. T-009" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Capacity (Seats):</label>
+                                <input type="number" id="tableCapacity" class="form-control" placeholder="e.g. 4" min="1" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Area:</label>
+                                <select id="tableArea" class="form-select" required>
+                                    <option value="Indoor">Indoor</option>
+                                    <option value="Outdoor">Outdoor</option>
+                                    <option value="VIP">VIP</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Table Status:</label>
+                                <select id="tableStatus" class="form-select" required>
+                                    <option value="Available">Available</option>
+                                    <option value="Occupied">Occupied</option>
+                                    <option value="Reserved">Reserved</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Add Table</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-dark text-white py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"> Table Catalog</h5>
+                        <span class="badge bg-secondary" id="totalTables">Total: 8 Tables</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Search Box -->
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <input type="text" id="searchBox" class="form-control form-control-sm" placeholder="🔍 Search table number or area...">
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle text-center">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Table No</th>
+                                        <th>Capacity</th>
+                                        <th>Area</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableCatalogBody">
+                                    <tr>
+                                        <td class="fw-bold">T-001</td>
+                                        <td>2 Persons</td>
+                                        <td><span class="badge bg-info text-dark">Indoor</span></td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">T-002</td>
+                                        <td>4 Persons</td>
+                                        <td><span class="badge bg-info text-dark">Indoor</span></td>
+                                        <td><span class="badge bg-danger">Occupied</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">T-003</td>
+                                        <td>4 Persons</td>
+                                        <td><span class="badge bg-info text-dark">Indoor</span></td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">T-004</td>
+                                        <td>6 Persons</td>
+                                        <td><span class="badge bg-warning text-dark">Outdoor</span></td>
+                                        <td><span class="badge bg-warning text-dark">Reserved</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">T-005</td>
+                                        <td>2 Persons</td>
+                                        <td><span class="badge bg-warning text-dark">Outdoor</span></td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">T-006</td>
+                                        <td>4 Persons</td>
+                                        <td><span class="badge bg-warning text-dark">Outdoor</span></td>
+                                        <td><span class="badge bg-danger">Occupied</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">T-007</td>
+                                        <td>6 Persons</td>
+                                        <td><span class="badge bg-warning text-dark">Outdoor</span></td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">T-008</td>
+                                        <td>10 Persons</td>
+                                        <td><span class="badge bg-secondary">VIP</span></td>
+                                        <td><span class="badge bg-warning text-dark">Reserved</span></td>
+                                        <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('tableForm');
+        const catalogBody = document.getElementById('tableCatalogBody');
+        const totalTablesBadge = document.getElementById('totalTables');
+        const searchBox = document.getElementById('searchBox');
+
+        function updateTotal() {
+            const count = catalogBody.getElementsByTagName('tr').length;
+            totalTablesBadge.innerText = `Total: ${count} Tables`;
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const number = document.getElementById('tableNumber').value;
+            const capacity = document.getElementById('tableCapacity').value;
+            const area = document.getElementById('tableArea').value;
+            const status = document.getElementById('tableStatus').value;
+
+            let areaBadgeClass = 'bg-info text-dark';
+            if (area === 'Outdoor') areaBadgeClass = 'bg-warning text-dark';
+            if (area === 'VIP') areaBadgeClass = 'bg-secondary';
+
+            let statusBadgeClass = 'bg-success';
+            if (status === 'Occupied') statusBadgeClass = 'bg-danger';
+            if (status === 'Reserved') statusBadgeClass = 'bg-warning text-dark';
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td class="fw-bold">${number}</td>
+                <td>${capacity} Persons</td>
+                <td><span class="badge ${areaBadgeClass}">${area}</span></td>
+                <td><span class="badge ${statusBadgeClass}">${status}</span></td>
+                <td><button class="btn btn-sm btn-outline-danger" onclick="deleteRow(this)">Delete</button></td>
+            `;
+
+            catalogBody.appendChild(newRow);
+            form.reset();
+            updateTotal();
+        });
+
+   
+        function deleteRow(btn) {
+            const row = btn.closest('tr');
+            row.remove();
+            updateTotal();
+        }
+
+        searchBox.addEventListener('keyup', function() {
+            const keyword = searchBox.value.toLowerCase();
+            const rows = catalogBody.getElementsByTagName('tr');
+            for (let row of rows) {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(keyword) ? '' : 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
